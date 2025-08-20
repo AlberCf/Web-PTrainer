@@ -1,0 +1,357 @@
+:root {
+    --primary-color: #0c0c0c; /* Negro Oscuro */
+    --secondary-color: #f8f8f8; /* Blanco Roto */
+    --accent-color: #DAA520; /* Dorado */
+    --text-color: #444;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    font-family: var(--font-serif);
+    color: var(--primary-color);
+}
+
+h3 {
+    font-family: var(--font-sans);
+    color: var(--primary-color);
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bg-light {
+    background-color: #fff;
+}
+
+/* Header and Navigation */
+.header {
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo img {
+    height: 120px;
+}
+
+.nav-links-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('https://via.placeholder.com/1920x1080/000000/F0D09F?text=Fondo+Elegante+Fitness') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--secondary-color);
+    position: relative;
+    padding-top: 80px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    background-color: #C0901A;
+}
+
+/* About Me Section */
+.about-me-grid {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.about-me-photo {
+    width: 30%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-me-content {
+    width: 50%;
+}
+
+/* Services and Ventajas */
+.services-grid, .ventajas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.service-item, .ventaja-item {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover, .ventaja-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.service-item h3, .ventaja-item h3 {
+    font-weight: 600;
+}
+
+/* Testimonials */
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonio-item {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.testimonio-item p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.testimonio-item cite {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--secondary-color);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: var(--font-sans);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 60px 0;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 250px;
+    margin-bottom: 30px;
+}
+
+.footer a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-me-grid {
+        flex-direction: column;
+    }
+    .about-me-photo, .about-me-content {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
