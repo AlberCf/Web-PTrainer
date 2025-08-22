@@ -385,7 +385,11 @@ h3 {
 @media (max-width: 768px) {
     .navbar {
         flex-wrap: wrap;
-        padding: 1rem;
+        padding: 0.8rem 1rem; 
+    }
+
+      .logo img {
+        height: 40px;
     }
 
     .nav-links-container {
