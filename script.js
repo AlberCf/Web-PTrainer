@@ -24,3 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Toggle del menú para móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links-container');
+
+    menuToggle.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+
+    // Ocultar menú al hacer clic en un enlace (para móviles)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinksContainer.classList.contains('active')) {
+                navLinksContainer.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    });

@@ -90,9 +90,11 @@ h3 {
 }
 
 .logo img {
-    height: 120px;
+    height: 160px;
+    padding: 10px;
 }
 
+/* Versión de escritorio (por defecto) */
 .nav-links-container {
     flex-grow: 1;
     display: flex;
@@ -125,6 +127,56 @@ h3 {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+.menu-toggle.active .hamburger {
+    background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 /* Hero Section */
@@ -192,7 +244,7 @@ h3 {
 }
 
 .about-me-photo {
-    width: 30%;
+    width: 300px;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
@@ -329,11 +381,40 @@ h3 {
     font-size: 0.9rem;
 }
 
-/* Responsive */
+/* Responsive (Tablet and Mobile) */
 @media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .nav-links-container {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .nav-links-container.active {
+        display: flex;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
     .about-me-grid {
         flex-direction: column;
+        gap: 40px;
     }
+
     .about-me-photo, .about-me-content {
         width: 100%;
         text-align: center;
