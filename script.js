@@ -1,20 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scroll para la navegación
+
+    // 1. Manejo del Scroll de la Navegación Principal
+    // Ahora solo selecciona los enlaces que están dentro de la lista de navegación
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            window.scrollTo({
-                top: targetSection.offsetTop - 70, // Ajusta el offset del header
-                behavior: 'smooth'
-            });
+            const targetId = link.getAttribute('href');
+    
+            // Si el enlace es a una sección de la misma página (ej. #contacto)
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.getElementById(targetId.substring(1));
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            // Si no empieza con #, se deja que el navegador lo maneje
+            // (por ejemplo, para ir a blog.html, WhatsApp, etc.).
         });
     });
 
-    // Efecto de la barra de navegación al hacer scroll
+    // 2. Efecto de la barra de navegación al hacer scroll
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -23,9 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
-});
 
-// Toggle del menú para móvil
+    // 3. Toggle del menú para móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinksContainer = document.querySelector('.nav-links-container');
 
@@ -34,8 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.classList.toggle('active');
     });
 
-    // Ocultar menú al hacer clic en un enlace (para móviles)
-    navLinks.forEach(link => {
+    // 4. Ocultar menú al hacer clic en un enlace (para móviles)
+    // También usa el selector específico para no afectar a otros enlaces
+    const linksForMobileMenu = document.querySelectorAll('.nav-links a');
+    linksForMobileMenu.forEach(link => {
         link.addEventListener('click', () => {
             if (navLinksContainer.classList.contains('active')) {
                 navLinksContainer.classList.remove('active');
@@ -43,3 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
