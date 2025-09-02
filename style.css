@@ -561,3 +561,50 @@ h3 {
         font-size: 2rem;
     }
 }
+
+/* --- Grupos Reducidos Section --- */
+.grupos-reducidos-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.grupos-reducidos-content ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0;
+    margin: 40px 0;
+    list-style-type: none;
+}
+
+.grupos-reducidos-content li {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+}
+
+.grupos-reducidos-content li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.grupos-reducidos-content h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.grupos-reducidos-content p {
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
